@@ -7,26 +7,28 @@
 
 
 {% block inner %}
-<h1>{% trans "Confirm E-mail Address" %}</h1>
+  <h1>{% trans "Confirm E-mail Address" %}</h1>
 
-{% if confirmation %}
+  {% if confirmation %}
 
-{% user_display confirmation.email_address.user as user_display %}
+    {% user_display confirmation.email_address.user as user_display %}
 
-<p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+      <p>{% blocktrans with confirmation.email_address.email as email %}请确认 <a href="mailto:{{ email }}">{{ email }}</a> 这是用户的邮件地址{{ user_display }}
+          .{% endblocktrans %}</p>
 
-<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-{% csrf_token %}
-    <button class="btn btn-primary" type="submit">{% trans 'Confirm' %}</button>
-</form>
+    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+      {% csrf_token %}
+      <button class="btn btn-primary" type="submit">{% trans 'Confirm' %}</button>
+    </form>
 
-{% else %}
+  {% else %}
 
-{% url 'account_email' as email_url %}
+    {% url 'account_email' as email_url %}
 
-<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+      <p>{% blocktrans %}邮件验证链接失效，请
+          <a href="{{ email_url }}">获取新的验证链接</a>.{% endblocktrans %}</p>
 
-{% endif %}
+  {% endif %}
 
 {% endblock %}
 

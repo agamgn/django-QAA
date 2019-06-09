@@ -1,0 +1,17 @@
+{% load static humanize thumbnail %}<!DOCTYPE html>
+
+<ul>
+    {% if notifications %}
+        {% for notification in notifications %}
+            <span class="fa fa-stack float-left">
+          <i class="fa {{ notification.get_icon }} fa-stack-1x"></i>
+        </span>
+            <p>{{ notification }}&nbsp;{{ notification.created_at|naturaltime }}</p>
+        {% endfor %}
+        <a type="button" class="btn-sm btn-dark text-center" href="{% url 'notifications:unread' %}">查看所有</a>
+        <a type="button" class="btn-sm btn-dark text-center"
+           href="{% url 'notifications:mark_all_read' %}">全部标为已读</a>
+    {% else %}
+        <li class="text-center">没有未读通知</li>
+    {% endif %}
+</ul>
