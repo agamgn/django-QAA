@@ -64,6 +64,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize", # Handy template tags
+    # "sorl.thumbnail",
     # "django.contrib.admin",
 ]
 THIRD_PARTY_APPS = [
@@ -71,7 +72,7 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework",
+    # "sorl.thumbnail",
 ]
 LOCAL_APPS = [
     "wenhu.users.apps.UsersConfig",
