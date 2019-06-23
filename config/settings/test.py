@@ -8,12 +8,9 @@ from .base import env
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = False
+DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = env(
-    "DJANGO_SECRET_KEY",
-    default="Iwac8I9saHYfUA1s2sh9NxmIz3AjsM3LuuiivDdd32RykteNDDF2CSadJs1XDMud",
-)
+SECRET_KEY = env("DJANGO_SECRET_KEY", default="K1AH9isH23modOisn6UkTIosZAkvu8hZaH5Qtk2UBBk8WxFEK7Gezg9RP9E1yvS0")
 # https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
@@ -22,8 +19,7 @@ TEST_RUNNER = "django.test.runner.DiscoverRunner"
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "",
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": ""
     }
 }
 
@@ -45,15 +41,3 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # noqa F405
         ],
     )
 ]
-
-# EMAIL
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-host
-EMAIL_HOST = "localhost"
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-port
-EMAIL_PORT = 1025
-
-# Your stuff...
-# ------------------------------------------------------------------------------
